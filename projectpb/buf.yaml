@@ -1,5 +1,5 @@
 version: v2
-name: buf.build/edu-gantt/proto-schemas/projectpb
+name: buf.build/edu-gantt/project-schemas
 deps:
   - buf.build/googleapis/googleapis
 lint:
