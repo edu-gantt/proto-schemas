@@ -3,7 +3,7 @@ syntax = "proto3";
 package projectpb.v1;
 
 import "google/protobuf/timestamp.proto";
-import "google/api/annotations.proto"
+import "google/api/annotations.proto";
 
 option go_package = "github.com/yakoovad/eg-project-service/gen/go/projectpb/v1;projectpbv1";
 
