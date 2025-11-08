@@ -4,7 +4,7 @@ package projectpb.v1;
 
 import "google/protobuf/timestamp.proto";
 
-option go_package = "github.com/yakoovad/eg-project-service/gen/go/projectpb/v1;projectpbv1";
+option go_package = "projectpb/v1;projectpbv1";
 
 enum TaskStatus {
   TASKS_STATUS_UNSPECIFIED = 0;
