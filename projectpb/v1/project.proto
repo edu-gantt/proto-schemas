@@ -3,12 +3,12 @@ syntax = "proto3";
 package projectpb.v1;
 
 import "google/protobuf/timestamp.proto";
-import "google/api/annotations.proto";
+import "common/v1/enums.proto";
 
 option go_package = "projectpb/v1;projectpbv1";
 
 enum TaskStatus {
-  TASKS_STATUS_UNSPECIFIED = 0;
+  TASK_STATUS_UNSPECIFIED = 0;
   TASK_STATUS_READY = 1;
   TASK_STATUS_IN_PROGRESS = 2;
   TASK_STATUS_NOT_READY = 3;
@@ -20,15 +20,21 @@ message Role {
 }
 
 message Subject {
-  string name = 1;
+  string id = 1;
+  string name = 2;
 }
 
 message Project {
   string id = 1;
   string name = 2;
   string description = 3;
-  google.protobuf.Timestamp deadline = 4;
-  Subject subject = 5;
+  repeated string deadlines = 4;
+
+  string subject_id = 5;
+  repeated Task tasks = 6;
+
+  google.protobuf.Timestamp created_at = 7;
+  google.protobuf.Timestamp updated_at = 8;
 }
 
 message Task {
@@ -36,15 +42,17 @@ message Task {
   string name = 2;
   string description = 3;
   repeated string requirements = 4;
-  google.protobuf.Timestamp deadline = 5;
-  TaskStatus status = 6;
+  repeated string deadlines = 5;
+  common.v1.TaskStatus status = 6;
+
+  common.v1.TaskType type = 7;
+
+  string project_id = 8;
+
+  repeated Task subtasks = 9;
+
+  google.protobuf.Timestamp created_at = 10;
+  google.protobuf.Timestamp updated_at = 11;
 }
 
-message Student {
-  string id = 1;
-  string full_name = 2;
-}
 
-message Admin {
-  string id = 1;
-}

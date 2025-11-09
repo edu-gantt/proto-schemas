@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package common.v1;
+
+option go_package = "common/v1;commonv1";
+
+message StudentRef {
+  string id = 1;
+}
+
+message AdminRef {
+  string id = 1;
+}
+
+message Role {
+  string id = 1;
+  string name = 2;
+}
+

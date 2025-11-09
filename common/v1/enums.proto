@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package common.v1;
+
+option go_package = "github.com/edu-gantt/proto/gen/go/common/v1;commonv1";
+
+enum TaskStatus {
+    TASK_STATUS_UNSPECIFIED = 0;
+    TASK_STATUS_READY = 1;        
+    TASK_STATUS_IN_PROGRESS = 2;  
+    TASK_STATUS_NOT_READY = 3;
+}
+
+enum TaskType {
+  TASK_TYPE_UNSPECIFIED = 0;
+  TASK_TYPE_INDEPENDENT = 1;    
+  TASK_TYPE_COMPOSITE = 2;      
+}
