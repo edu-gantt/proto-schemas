@@ -23,7 +23,7 @@ message Project {
   string id = 1;
   string name = 2;
   string description = 3;
-  repeated string deadlines = 4;
+  google.protobuf.Timestamp deadline = 4;
 
   Subject subject = 5;
   repeated Task tasks = 6;
