@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package common.v1;
 
-option go_package = "github.com/edu-gantt/proto/gen/go/common/v1;commonv1";
+option go_package = "common/v1;commonv1";
 
 enum TaskStatus {
     TASK_STATUS_UNSPECIFIED = 0;
