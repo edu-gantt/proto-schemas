@@ -37,7 +37,7 @@ message Task {
   string name = 2;
   string description = 3;
   repeated string requirements = 4;
-  repeated string deadlines = 5;
+  google.protobuf.Timestamp deadlines = 5;
   common.v1.TaskStatus status = 6;
 
   common.v1.TaskType type = 7;
