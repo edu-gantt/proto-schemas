@@ -25,7 +25,7 @@ message Project {
   string description = 3;
   repeated string deadlines = 4;
 
-  string subject_id = 5;
+  Subject subject = 5;
   repeated Task tasks = 6;
 
   google.protobuf.Timestamp created_at = 7;
