@@ -4,12 +4,16 @@ package common.v1;
 
 option go_package = "common/v1;commonv1";
 
-message StudentRef {
+message Student {
   string id = 1;
+  string full_name = 2;
+  string email = 3;
 }
 
-message AdminRef {
+message Admin {
   string id = 1;
+  string full_name = 2;
+  string email = 3;
 }
 
 message Role {
