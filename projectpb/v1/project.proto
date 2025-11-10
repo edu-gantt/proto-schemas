@@ -4,6 +4,7 @@ package projectpb.v1;
 
 import "google/protobuf/timestamp.proto";
 import "common/v1/enums.proto";
+import "validate/validate.proto";
 
 option go_package = "projectpb/v1;projectpbv1";
 
@@ -15,21 +16,21 @@ enum TaskStatus {
 }
 
 message Subject {
-  string id = 1;
-  string name = 2;
+  string id = 1 [(validate.rules).string = { min_len: 1 }];
+  string name = 2 [(validate.rules).string = { min_len: 1 }];
 }
 
 message Project {
-  string id = 1;
-  string name = 2;
+  string id = 1 [(validate.rules).string = { min_len: 1 }];
+  string name = 2 [(validate.rules).string = { min_len: 1 }];
   string description = 3;
-  google.protobuf.Timestamp deadline = 4;
+  google.protobuf.Timestamp deadline = 4 [(validate.rules).timestamp = {
+    gt_now: true,
+    required: true
+  }];
 
   Subject subject = 5;
   repeated Task tasks = 6;
-
-  google.protobuf.Timestamp created_at = 7;
-  google.protobuf.Timestamp updated_at = 8;
 }
 
 message Task {
@@ -45,9 +46,6 @@ message Task {
   string project_id = 8;
 
   repeated Task subtasks = 9;
-
-  google.protobuf.Timestamp created_at = 10;
-  google.protobuf.Timestamp updated_at = 11;
 }
 
 

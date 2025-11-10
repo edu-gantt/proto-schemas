@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+package projectpb.v1;
+
+import "projectpb/v1/messages.proto";
+import "google/api/annotations.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+
+option go_package = "projectpb/v1;projectpbv1";
+
+
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+  info: {
+    title: "Project Management Service";
+    version: "1.0.0";
+    contact: {
+      name: "edu-gantt team";
+      url: "https://github.com/edu-gantt/eg-project-service";
+      email: "noreply@example.com";
+    };
+    license: {
+      name: "MIT License";
+      url: "https://github.com/edu-gantt/eg-project-service/blob/main/LICENSE";
+    };
+  };
+  external_docs: {
+    url: "https://github.com/edu-gantt/eg-project-service";
+    description: "Find out more about Project Service";
+  };
+  schemes: HTTP;
+  schemes: HTTPS;
+  consumes: "application/json";
+  produces: "application/json";
+};
+
+service ProjectService {
+  rpc GetProject(GetProjectRequest) returns (GetProjectResponse) {
+    option (google.api.http) = {
+      get: "/v1/projects/{id}"
+    };
+  }
+
+  rpc CreateProject(CreateProjectRequest) returns (CreateProjectResponse) {
+    option (google.api.http) = {
+      post: "/v1/projects"
+      body: "project"
+    };
+  }
+
+  rpc UpdateProject(UpdateProjectRequest) returns (UpdateProjectResponse) {
+    option (google.api.http) = {
+      put: "/v1/projects/{project.id}"
+      body: "project"
+    };
+  }
+}

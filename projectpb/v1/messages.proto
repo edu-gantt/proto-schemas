@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package projectpb.v1;
+
+import "projectpb/v1/project.proto";
+import "validate/validate.proto";
+
+option go_package = "projectpb/v1;projectpbv1";
+
+
+message GetProjectRequest {
+  string id = 1 [(validate.rules).string = {min_len: 1}];
+}
+
+message GetProjectResponse {
+  Project project = 1;
+}
+
+message CreateProjectRequest {
+  Project project = 1 [(validate.rules).message = {required: true}];
+}
+
+message CreateProjectResponse {
+  Project project = 1;
+}
+
+message UpdateProjectRequest {
+  Project project = 1 [(validate.rules).message = {required: true}];
+}
+
+message UpdateProjectResponse {
+  Project project = 1;
+}

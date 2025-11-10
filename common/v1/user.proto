@@ -2,18 +2,21 @@ syntax = "proto3";
 
 package common.v1;
 
+import "validate/validate.proto";
+
 option go_package = "common/v1;commonv1";
+
 
 message Student {
   string id = 1;
   string full_name = 2;
-  string email = 3;
+  string email = 3 [(validate.rules).string.email = true];
 }
 
 message Admin {
   string id = 1;
   string full_name = 2;
-  string email = 3;
+  string email = 3 [(validate.rules).string.email = true];
 }
 
 message Role {
